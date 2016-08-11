@@ -981,26 +981,15 @@ function pokemonLabel (name, rarity, types, disappearTime, id, latitude, longitu
     <div>
       <b>${name}</b>
       <span> - </span>
-      <small>
-        <a href='http://www.pokemon.com/us/pokedex/${id}' target='_blank' title='View in Pokedex'>#${id}</a>
-      </small>
+      <small>#${id}</small>
       <span> ${rarityDisplay}</span>
       <span> - </span>
-      <small>${typesDisplay}</small>
+      <small><a href='javascript:excludePokemon(${id})'>Exclude</a></small>
     </div>
     <div>
       Disappears at ${pad(disappearDate.getHours())}:${pad(disappearDate.getMinutes())}:${pad(disappearDate.getSeconds())}
       <span class='label-countdown' disappears-at='${disappearTime}'>(00m00s)</span>
     </div>
-    <div>
-      Location: ${latitude.toFixed(6)}, ${longitude.toFixed(7)}
-    </div>
-    <div>
-      <a href='javascript:excludePokemon(${id})'>Exclude</a>&nbsp;&nbsp
-      <a href='javascript:notifyAboutPokemon(${id})'>Notify</a>&nbsp;&nbsp
-      <a href='javascript:removePokemonMarker("${encounterId}")'>Remove</a>&nbsp;&nbsp
-      <a href='https://www.google.com/maps/dir/Current+Location/${latitude},${longitude}?hl=en' target='_blank' title='View in Maps'>Get directions</a>
-    </div>`
   return contentstring
 }
 
