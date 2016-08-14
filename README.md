@@ -20,7 +20,7 @@ Live visualization of all the pokemon (with option to show gyms and pokestops) i
 * Incredibly fast, efficient searching algorithm (compared to everything else available)
 
 [![Deploy](https://raw.githubusercontent.com/sych74/PokemonGo-Map-in-Cloud/master/images/deploy-to-jelastic.png)](https://jelastic.com/install-application/?manifest=https://raw.githubusercontent.com/JohnJamesRambo/PokemonGo-Map/develop/manifest.jps) [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/PokemonGoMap/PokemonGo-Map#develop)
-
+* [Twitter](https://twitter.com/PokemapGG) for status updates
 * [Website](https://pokemongomap.github.io/PoGoMapWebsite/) for general introduction
 * [Discord](https://discord.gg/PWp2bAm) for general support
 * [Documentation](https://pgm.readthedocs.io/en/develop/) for installation and usage docs
