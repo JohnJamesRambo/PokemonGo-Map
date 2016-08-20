@@ -996,7 +996,7 @@ function pokemonLabel (name, rarity, types, disappearTime, id, latitude, longitu
     <div>
       Disappears at ${pad(disappearDate.getHours())}:${pad(disappearDate.getMinutes())}:${pad(disappearDate.getSeconds())}
       <span class='label-countdown' disappears-at='${disappearTime}'>(00m00s)</span>
-    </div>
+    </div>`
   return contentstring
 }
 
