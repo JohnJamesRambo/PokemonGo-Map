@@ -237,7 +237,7 @@ def search_worker_thread(args, account, search_items_queue, parse_lock, encrypti
                 # Grab the next thing to search (when available)
                 step, step_location = search_items_queue.get()
 
-                log.info('Search step %d beginning (queue size is %d)', step, search_items_queue.qsize())
+                log.debug('Search step %d beginning (queue size is %d)', step, search_items_queue.qsize())
 
                 # Let the api know where we intend to be for this loop
                 api.set_position(*step_location)

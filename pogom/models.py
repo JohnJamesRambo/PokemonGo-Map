@@ -434,7 +434,7 @@ def parse_map(map_dict, step_location):
 
     flaskDb.close_db(None)
 
-    log.info('Upserted %d pokemon, %d pokestops, and %d gyms',
+    log.info('Upserted: %2d | %2d | %2d',
              pokemons_upserted,
              pokestops_upserted,
              gyms_upserted)
