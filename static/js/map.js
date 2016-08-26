@@ -990,12 +990,13 @@ function pokemonLabel (name, rarity, types, disappearTime, id, latitude, longitu
       <span> - </span>
       <small>#${id}</small>
       <span> ${rarityDisplay}</span>
-      <span> - </span>
-      <small><a href='javascript:excludePokemon(${id})'>Exclude</a></small>
     </div>
     <div>
       Disappears at ${pad(disappearDate.getHours())}:${pad(disappearDate.getMinutes())}:${pad(disappearDate.getSeconds())}
       <span class='label-countdown' disappears-at='${disappearTime}'>(00m00s)</span>
+    </div>
+    <div>
+      <small><a href='javascript:excludePokemon(${id})'>Exclude</a></small>
     </div>`
   return contentstring
 }
