@@ -492,7 +492,7 @@ def search_worker_thread(args, account, search_items_queue, pause_bit, encryptio
                     continue
 
                 status['message'] = 'Searching at {:6f},{:6f}'.format(step_location[0], step_location[1])
-                log.info(status['message'])
+                log.debug(status['message'])
 
                 # Let the api know where we intend to be for this loop
                 api.set_position(*step_location)
