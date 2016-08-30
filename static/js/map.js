@@ -1114,12 +1114,8 @@ function gymLabel (teamName, teamId, gymPoints, latitude, longitude, lastScanned
     str = `
       <div>
         <center>
-          <div style='padding-bottom: 2px'>
-            Gym owned by:
-          </div>
           <div>
-            <b style='color:rgba(${gymColor[teamId]})'>Team ${teamName}</b><br>
-            <img height='70px' style='padding: 5px;' src='static/forts/${teamName}_large.png'>
+            <b style='color:rgba(${gymColor[teamId]})'>Team ${teamName}</b>
           </div>
           <div>
             ${nameStr}
@@ -1129,15 +1125,6 @@ function gymLabel (teamName, teamId, gymPoints, latitude, longitude, lastScanned
           </div>
           <div>
             ${memberStr}
-          </div>
-          <div>
-            Location: ${latitude.toFixed(6)}, ${longitude.toFixed(7)}
-          </div>
-          <div>
-            Last Scanned: ${lastScannedStr}
-          </div>
-          <div>
-            <a href='https://www.google.com/maps/dir/Current+Location/${latitude},${longitude}?hl=en' target='_blank' title='View in Maps'>Get directions</a>
           </div>
         </center>
       </div>`
