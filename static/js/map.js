@@ -1,4 +1,4 @@
-//
+﻿//
 // Global map.js variables
 //
 
@@ -848,6 +848,26 @@ function removePokemonMarker (encounterId) { // eslint-disable-line no-unused-va
   mapData.pokemons[encounterId].hidden = true
 }
 
+function getStats (spawnpointId) { // eslint-disable-line no-unused-vars
+
+  $('ul[name=' + spawnpointId + ']').empty()
+  $.ajax({
+    url: '/spawn_history?spawnpoint_id=' + spawnpointId,
+    dataType: 'json',
+    async: true,
+    success: function (data) {
+      $.each(data.spawn_history, function (count, id) {
+        $('ul[name=' + spawnpointId + ']').append('<li style="float: left; width: 33% list-style: none; height: 36px; margin-right: 5px; "><span><img src="static/icons/' + id['pokemon_id'] + '.png"></span><span style="font-weight: bold; vertical-align: middle;">' + id['count'] + '</span></span>')
+      })
+    },
+    error: function (jqXHR, status, error) {
+      console.log('Error loading stats: ' + error)
+    }
+  })
+
+}
+
+
 function initMap () { // eslint-disable-line no-unused-vars
   map = new google.maps.Map(document.getElementById('map'), {
     center: {
@@ -1169,6 +1189,7 @@ function formatSpawnTime (seconds) {
   // the subtraction to get the appearance time will knock seconds under 0 if the spawn happens in the previous hour
   return ('0' + Math.floor(((seconds + 3600) % 3600) / 60)).substr(-2) + ':' + ('0' + seconds % 60).substr(-2)
 }
+
 function spawnpointLabel (item) {
   var str = `
     <div>
@@ -1185,6 +1206,28 @@ function spawnpointLabel (item) {
       </div>`
   }
   return str
+}
+
+function pokespawnLabel (item) {
+  var str
+
+  str = `<div>
+      Every hour from ${formatSpawnTime(item.time)} to ${formatSpawnTime(item.time + 900)}
+    </div>`
+
+  if (item.special) {
+    str += `<div>
+        May appear as early as ${formatSpawnTime(item.time - 1800)}
+      </div>`
+  }
+  str += `<div>
+      Location: ${item.latitude.toFixed(6)}, ${item.longitude.toFixed(7)}
+    </div>
+    <div><a href="javascript:getStats('${item.spawnpoint_id}')">Stats</a>&nbsp;
+              <ul class="statsHolder " name="${item.spawnpoint_id}" style="max-width: 240px; list-style: none"></ul>
+    </div>`
+  return str
+
 }
 
 function getGoogleSprite (index, sprite, displayHeight) {
@@ -1465,7 +1508,7 @@ function setupSpawnpointMarker (item) {
   })
 
   marker.infoWindow = new google.maps.InfoWindow({
-    content: spawnpointLabel(item),
+    content: pokespawnLabel(item),
     disableAutoPan: true,
     position: circleCenter
   })
