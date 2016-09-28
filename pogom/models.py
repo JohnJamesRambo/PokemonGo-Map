@@ -329,21 +329,14 @@ class Pokemon(BaseModel):
         return filtered
 
     @classmethod
-
     def get_spawn_history(cls, spawnpoint_id):
-
         query = (Pokemon
-
                  .select(fn.Count(Pokemon.pokemon_id).alias('count'), Pokemon.pokemon_id)
-
-                 .where((Pokemon.spawnpoint_id == spawnpoint_id))
-
+                 .where((Pokemon.spawnpoint_id == spawnpoint_id) &
+                        (Pokemon.disappear_time > datetime(2016,9,27,0,14,59)))
                  .group_by(Pokemon.pokemon_id)
-
                  .order_by(Pokemon.pokemon_id)
-
                  .dicts())
-
 
         return list(query)
 
